@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Admin - Justice d'Iwa</title>
+<link rel="stylesheet" href="style.css">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+<div id="loadingGuard" class="screen-loader">Vérification de l'accès...</div>
+
+<div id="adminApp" class="hidden">
+<header class="topbar">
+  <div class="brand"><div class="logo">岩</div><div><h1>IWA</h1><p>ADMINISTRATION JUDICIAIRE</p></div></div>
+  <div class="nav-actions">
+    <span id="adminName" class="admin-email"></span>
+    <button id="accountsBtn" class="nav-btn">Comptes</button>
+    <button id="logoutBtn" class="nav-btn">Déconnexion</button>
+  </div>
+</header>
+
+<main>
+<section class="hero admin-hero">
+  <p class="kicker">SECTION JUDICIAIRE</p>
+  <h2>Dossiers judiciaires</h2>
+</section>
+
+<section class="stats">
+  <div><strong id="statTotal">0</strong><span>Actifs</span></div>
+  <div><strong id="statPending">0</strong><span>En attente</span></div>
+  <div><strong id="statOpen">0</strong><span>En traitement</span></div>
+  <div><strong id="statArchived">0</strong><span>Archivés</span></div>
+</section>
+
+<section class="panel">
+  <div class="toolbar">
+    <input id="searchInput" placeholder="Rechercher...">
+    <select id="statusFilter">
+      <option value="">Tous les statuts</option>
+      <option>En attente</option><option>En enquête</option><option>Audience prévue</option>
+      <option>Jugement rendu</option><option>Classée</option>
+    </select>
+    <select id="archiveFilter">
+      <option value="active">Actifs</option>
+      <option value="archived">Archives</option>
+      <option value="all">Tous</option>
+    </select>
+    <button id="refreshBtn" class="secondary">Actualiser</button>
+  </div>
+  <div id="adminMessage" class="message hidden"></div>
+  <div id="casesList" class="cases-list"></div>
+</section>
+</main>
+</div>
+
+<div id="caseModal" class="modal hidden">
+  <div class="modal-backdrop" onclick="closeCaseModal()"></div>
+  <div class="modal-card">
+    <div class="modal-head"><h2 id="modalTitle">Dossier</h2><button class="icon-btn" onclick="closeCaseModal()">✕</button></div>
+    <div id="modalBody"></div>
+  </div>
+</div>
+
+<div id="accountsModal" class="modal hidden">
+  <div class="modal-backdrop" onclick="closeAccountsModal()"></div>
+  <div class="modal-card account-modal-card">
+    <div class="modal-head"><h2>Créer un compte</h2><button class="icon-btn" onclick="closeAccountsModal()">✕</button></div>
+    <form id="createAccountForm">
+      <label>Identifiant<input id="newUsername" required minlength="3"></label>
+      <label>Mot de passe<input id="newPassword" type="password" required minlength="8"></label>
+      <label>Confirmation<input id="confirmPassword" type="password" required minlength="8"></label>
+      <button class="primary full" type="submit">Créer le compte</button>
+    </form>
+    <div id="accountMessage" class="message hidden"></div>
+  </div>
+</div>
+
+<script src="config.js?v=clean1"></script>
+<script src="admin.js?v=clean1"></script>
+</body>
+</html>
