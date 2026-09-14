@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Justice d'Iwa - Dépôt de plainte</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">
+    <div class="logo">岩</div>
+    <div><h1>IWA</h1><p>PORTAIL JUDICIAIRE</p></div>
+  </div>
+  <a class="nav-btn" href="login.html">Administration</a>
+</header>
+
+<main>
+  <section class="hero">
+    <p class="kicker">JUSTICE DU VILLAGE CACHÉ DE LA ROCHE</p>
+    <h2>Déposer une plainte</h2>
+    <p class="intro">Toute plainte transmise ici est enregistrée dans les archives judiciaires d'Iwa et pourra être traitée par les autorités compétentes.</p>
+  </section>
+
+  <section class="panel stone-panel">
+    <div class="section-title">
+      <p class="kicker">NOUVEAU DOSSIER</p>
+      <h2>Formulaire officiel</h2>
+    </div>
+
+    <form id="complaintForm">
+      <div class="grid">
+        <label>Nom RP du plaignant
+          <input id="plaignant" required placeholder="Ex. Eko Motori">
+        </label>
+        <label>Nom RP de l'accusé
+          <input id="accuse" required placeholder="Nom de l'accusé">
+        </label>
+      </div>
+
+      <div class="grid">
+        <label>Motif
+          <select id="motif" required>
+            <option value="">Choisir...</option>
+            <option>Agression</option>
+            <option>Vol</option>
+            <option>Menaces</option>
+            <option>Escroquerie</option>
+            <option>Meurtre</option>
+            <option>Dégradation</option>
+            <option>Trouble à l'ordre public</option>
+            <option>Autre</option>
+          </select>
+        </label>
+        <label>Lieu des faits
+          <input id="lieu" required placeholder="Ex. Place centrale d'Iwa">
+        </label>
+      </div>
+
+      <div class="grid">
+        <label>Date des faits
+          <input id="dateFaits" type="date" required>
+        </label>
+        <label>Témoins
+          <input id="temoins" placeholder="Facultatif">
+        </label>
+      </div>
+
+      <label>Description détaillée
+        <textarea id="description" rows="8" required placeholder="Décrivez précisément les faits..."></textarea>
+      </label>
+
+      <button class="primary" type="submit">Transmettre la plainte</button>
+    </form>
+
+    <div id="successBox" class="message success hidden"></div>
+    <div id="errorBox" class="message error hidden"></div>
+  </section>
+</main>
+
+<footer>Portail Judiciaire d'Iwa — Archives judiciaires</footer>
+<script src="config.js?v=iwa-v2-debug-3"></script>
+<script src="public.js?v=usernames-1"></script>
+</body>
+</html>
